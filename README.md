@@ -60,6 +60,10 @@
   txtfile = open(opts[2][1], "r")
   read_file = txtfile.read().replace(" ", "").split()
   ```
+  - Your text file shoud be like this
+  
+  ![ss2](https://user-images.githubusercontent.com/47830409/65287573-603b3080-db4c-11e9-817e-6a68eb58d567.PNG)
+
   
   ### Start Driver
   
@@ -143,20 +147,27 @@
 
         return labels, df
   ```
+  - We are finding each EAN Number on Search link > "https://www.repxpert.co.uk/en/productcatalog/search#!?searchNo="
+  - then taking the label
+  ![ss1](https://user-images.githubusercontent.com/47830409/65287652-a0021800-db4c-11e9-8f50-7e67d876cbd8.PNG)
+
+  - If not found then give labels.append("Null")
+  
+  
   ### Main Function
   
     ```sh
     if __name__ == "__main__":
-    # Okuyacak parametreleri ayırıyoruz.
+
     username, password, txtfile, outputfile, language = parameters(
         sys.argv[1:])
-    # Bir bot nesnesi oluşturup gerekli parametreleri giriyoruz.
+
     bot = repxpertBot(username, password, txtfile, language)
 
-    # labels list şeklinde gelen ingilizce
-    # df DataFrame excel kayıt ettirmek için
+
     labels, df = bot.aramaYap()
-    # Çıktıyı Kayıt Etmek için Yorum Satırından kaldırın.
+    
     df.to_csv(outputfile)
+    
     ```
-  
+  **Thank You , Focusthen**
